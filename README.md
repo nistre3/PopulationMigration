@@ -1,11 +1,15 @@
 # PopulationMigration
+
 Simulated Populations with Individuals of varying phenotypes movement between Landscapes. 
 
 Final Project
-Introduction to Computing for Biologists
-Spring 2020
+
+Introduction to Computing for Biologists - Spring 2020
+
 Due by 5 PM on May 8, 2020
-Context
+
+# Context
+
 You are a conservation biologist in charge of managing habitats for a protected
 reserve. Your reserve includes several distinct patches of intact forest that harbor
 populations of the endangered Warbling Babbler. You are worried about the longterm fate of these populations if the habitats remain disconnected with limited
@@ -15,7 +19,9 @@ corridors that will allow individuals to move between the patches. However, you 
 know that the populations have some phenotypic differences (like color) and you are
 wondering how the frequencies of the phenotypes, and the overall population sizes,
 will change in the populations once they are connected.
-Simulation Model
+
+# Simulation Model
+
 To explore the consequences of establishing habitat corridors between the patches,
 you decide to build a Python framework that will allow you to simulate the
 movement of individuals through time (simulated as discrete steps) and track what
@@ -36,6 +42,7 @@ it started, and add it to the list of individuals in the population where it wen
 are multiple ways to use the probabilities in the dispersal matrix to decide if an
 individual moves in each time step, but one function you may find helpful is
 random.choices(…) from the random module.
+
 Population constructors should create a new list for individuals in that population,
 and Populations should have methods to add and remove individuals, as well as to
 calculate and print the frequency of phenotypes among individuals. Landscape
@@ -50,6 +57,7 @@ All three classes may contain other attributes or methods as you see fit! Some
 elements of this framework are similar to recent assignments, so you may find
 inspiration in the code you wrote earlier. One additional piece of advice is to test
 each classʼs constructor and methods as you write them.
+
 When simulations begin, all the individuals in a population should have the same
 phenotype. As individuals move back and forth between populations through the
 time steps (weeks), you will want to track the trajectory of phenotype frequencies
@@ -59,32 +67,42 @@ can be independent. I recommend overlaying phenotype frequencies or population
 sizes for different populations on a single plot for easy comparison. For example,
 you might create one plot for phenotype frequencies that shows three different lines
 for three different populations, and another, similar plot for population sizes.
-Expectations and Guidance
+
+# Expectations and Guidance
+
 I expect and hope that you will work with others on this project, but given the
 challenging circumstances of remote classwork you are not required to do so. If you
 do work with others, all of the code should still be your own. As with written
 assignments for any class, no two peopleʼs code should be identical and you should
 not copy and paste. Plagiarism rules apply.
+
 To demonstrate your progress and ability to use git, I expect to see a regular commit
 history for your project. All of the code should not show up suddenly at once in a
 single commit. You should begin by writing out what you think the structure of your
 code should look like using comments and pseudocode. Your first commit should
 demonstrate this pseudocode structure. You can, of course, modify and change this
 structure as you work, if needed.
+
 Your code does not necessarily need to be very long. Well-structured code is usually
 shorter than less structured code.
+
 You can write your code and run your simulations in a single Jupyter notebook, or
 using some combination of Python and bash scripts. Either way, make sure I can
 follow the structure of your code, the simulations you ran, and the answers to the
 questions.
+
 You do not need to submit a pull request to submit your final project. Instead, create
 a new repository on your own and send me the link to your repository to submit your
 assignment.
+
 While I intended to have you present on your final projects during our allotted final
 exam time, I think that will be too challenging right now. Instead, you have all of
 finals week to work on your final projects. They are due next Friday, May 8th at 5
 PM. Please email me a link to your repository by then.
-Potential Pitfall
+
+
+# Potential Pitfall
+
 Keeping track of individuals that move between populations will require appending
 and removing individuals from lists. However (warning!) you should not modify a list
 that you are looping through inside of the loop itself. Otherwise, you will run into
@@ -112,9 +130,10 @@ population B to population A)?
 What effect does changing the starting population sizes have on the trajectory of
 phenotype frequencies? In other words, what might happen if you connect big
 habitat patches versus small habitat patches?
-Grading Rubric
+
+# Grading Rubric
+
 40% - Accuracy of Code and Simulation
 25% - Commenting and Cleanliness of Code
 25% - Use of Code to Answer Questions
-10% - Commit History that Shows Project Progress (start with
-comments/pseudocode)
+10% - Commit History that Shows Project Progress (start with comments/pseudocode)
