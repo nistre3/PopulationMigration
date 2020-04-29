@@ -8,19 +8,18 @@ Introduction to Computing for Biologists - Spring 2020
 
 Due by 5 PM on May 8, 2020
 
-# Context
+### Context
 
  You are a conservation biologist in charge of managing habitats for a protected
 reserve. Your reserve includes several distinct patches of intact forest that harbor
-populations of the endangered Warbling Babbler. You are worried about the longterm fate of these populations if the habitats remain disconnected with limited
-movement of individuals between them (i.e., limited migration between the
+populations of the endangered Warbling Babbler. You are worried about the longterm fate of these populations if the habitats remain disconnected with limited movement of individuals between them (i.e., limited migration between the
 populations), so youʼd like to use funds from your budget to establish habitat
 corridors that will allow individuals to move between the patches. However, you also
 know that the populations have some phenotypic differences (like color) and you are
 wondering how the frequencies of the phenotypes, and the overall population sizes,
 will change in the populations once they are connected.
 
-# Simulation Model
+### Simulation Model
 
  To explore the consequences of establishing habitat corridors between the patches,
 you decide to build a Python framework that will allow you to simulate the
@@ -32,8 +31,8 @@ simulation, individuals can stay in the population where they started, or move t
 new population. The probabilities that individuals stay or leave are stored in a table
 called a dispersal matrix (more detail below).
 
- Individuals need to (at a minimum) have a phenotype attribute, populations need to
-(at a minimum) have a list of Individuals, and Landscapes need to (at a minimum)
+ **_Individuals_** need to (at a minimum) have a phenotype attribute, **_Populations_** need to
+(at a minimum) have a list of Individuals, and **_Landscapes_** need to (at a minimum)
 have a list of Populations and a dispersal matrix. The dispersal matrix consists of
 the probabilities that an individual disperses between populations, or stays in place,
 each time step. For Warbling Babblers, these probabilities correspond to their
@@ -69,7 +68,7 @@ sizes for different populations on a single plot for easy comparison. For exampl
 you might create one plot for phenotype frequencies that shows three different lines
 for three different populations, and another, similar plot for population sizes.
 
-# Expectations and Guidance
+### Expectations and Guidance
 
  I expect and hope that you will work with others on this project, but given the
 challenging circumstances of remote classwork you are not required to do so. If you
@@ -102,7 +101,7 @@ finals week to work on your final projects. They are due next Friday, May 8th at
 PM. Please email me a link to your repository by then.
 
 
-# Potential Pitfall
+### Potential Pitfall
 
 Keeping track of individuals that move between populations will require appending
 and removing individuals from lists. However (warning!) you should not modify a list
@@ -111,10 +110,13 @@ unexpected behavior.
 
 Hereʼs an example:
 
-|test = [1,2,3,4,5,6]
-|for t in test:
-| print(t)
-| test.remove(test[0])
+`test = [1,2,3,4,5,6]
+
+for t in test:
+ 
+ print(t)
+ 
+ test.remove(test[0])`
  
 What happens in this case?
 
