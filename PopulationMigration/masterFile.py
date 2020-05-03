@@ -1,4 +1,4 @@
-# Master File
+# Master File 
 #
 # A simulation of Warbling Babbler movement with different phenotypes betwee several populations
 # in different landscapes aver the course of several weeks. This uses a randomized dispersal matrix
@@ -18,6 +18,7 @@ class individual:
 
     def migration(self):
         # Chance of migration between populations
+        # May be better to have in Landscapes
     
 
 class population:
@@ -60,8 +61,8 @@ class landscape:
         #Test Landscape
         self.landscape = [population(popSize = 5,phen=1),population(popSize = 10,phen=2)]
 
-        
-                        
+
+
     def move(self):
     """Executes all movement between populations"""
 
