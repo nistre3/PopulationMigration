@@ -22,12 +22,15 @@ class individual:
 
 class population:
 
-    def __init__(self,popSize = 0,phenotype = "Fluffy"):
+    def __init__(self,popSize = 0,phenotype = "Fluffy",weights = [0.9,0.1]):
         """Population constructor that initializes the contents of each population and its size, while making sure that
         there are no duplicate individuals. The defaults are that the population is empty and the phenotype is Fluffy"""
 
         self.popSize = popSize
         self.phenotype = phenotype
+        self.inQ = []
+        self.outQ = []
+        self.weights = weights
 
         # Test populations
         # Checks which phenotype each population is initially classified as and then creates corresponding individuals
@@ -40,7 +43,6 @@ class population:
             for i in range(popSize):
                 self.indv.append( individual(id=i+1,phen = "Fuzzy") )
 
-        #include a test to check for duplicates
        
 
     def phen_prob(self): #######
@@ -59,47 +61,63 @@ class landscape:
         self.popSize1 = popSize1 # PopSize of Pop1
         self.popSize2 = popSize2 # PopSize of Pop2
 
+        self.weights = [[0.9,0.1],[0.8,0.2]]
+
         # Landscapes - Only 2 Allowed
-        self.lands = [population(popSize1,phenotype="Fluffy"),population(popSize2,phenotype="Fuzzy")]
+        self.lands = [population(popSize1,phenotype="Fluffy",weights=[0.9,0.1]),population(popSize2,phenotype="Fuzzy",weights=[0.8,0.2])]
 
 
 
     def move(self):
         """Executes all movement between populations"""
 
-        migrate = ["stay","leave"]
-        weight1 = [0.9,0.1]
+#        weight1 = [0.9,0.1]
 #        weight2 = [0.8,0.2]
          
-        for i in self.lands: 
 
-            for popl in self.lands: # Iterates over each population in the landscape
-
-                for indv in popl.indv: # Iterates over each member in a population
+        for popl in self.lands: # Iterates over each population in the landscape
+            
+            
+            for indv in popl.indv: # Iterates over each member in a population
                     
-#                    if self.lands[i] == self.lands[0]:
-                        move = random.choices(migrate, weight1) # Weighted Random movement from pop 1 to pop 2
+                move = random.choices(self.lands, popl.weights) # Weighted Random movement from pop 1 to pop 2
 
-                        if move == "leave":
-                            popl.indv[i+1].append(indv) # Appends individual to Pop2
-                            popl.indv[i+1].remove(indv) # Removes from Pop1
-                    
-#                    else:
- #                       move = random.choices(migrate, weight2) # Weighted Random movement from pop 2 to pop 1
+                if move[0] != popl:
+                    popl.outQ.append(indv)
+                    move[0].inQ.append(indv)
 
-  #                      if move == "leave":
-   #                         popl.indv[i-1].append(indv) # Appends the individual to Pop1
-    #                        popl.indv[i-1].remove(indv) # Removes from Pop2
+        for popl in self.lands:
+            for i in popl.inQ:
+                popl.indv.append(i)
+            popl.inQ = []
+
+            for i in popl.outQ:
+                popl.indv.remove(i)
+            popl.outQ = []
 
 
 
+Pop1Size = 5    # Fluffy Population
+Pop2Size = 10   # Fuzzy Population
 
-popl = population(popSize=10,phenotype="Fluffy")
+popl = population(Pop1Size,phenotype="Fluffy")
 
-landscape = landscape(5,10)
+landscape = landscape(Pop1Size,Pop2Size)
 
-for i in range(1): # how to call population
-    print(popl.indv[i].phen)
+#for i in range(1): # how to call population
+#    print(popl.indv[i].phen)
 
-for i in range(1): # how to call landscape
-    print(landscape.lands[0].indv[i].phen)
+
+
+#for i in range(Pop1Size): # how to call landscape
+#    print(landscape.lands[0].indv[i].phen)
+
+for i in range(10):
+    landscape.move()
+
+print("~~~~~~~~~~~~~")
+for i in landscape.lands[0].indv: # how to call landscape
+    print(i.phen)
+print("----")
+for i in landscape.lands[1].indv: # how to call landscape
+    print(i.phen)
