@@ -5,7 +5,7 @@
 # to determine a rate of migration between populations. 
 
 import random
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 class individual:
@@ -23,8 +23,8 @@ class individual:
 class population:
 
     def __init__(self,popSize = 0,phenotype = "Fluffy",weights = [0.9,0.1]):
-        """Population constructor that initializes the contents of each population and its size, while making sure that
-        there are no duplicate individuals. The defaults are that the population is empty and the phenotype is Fluffy"""
+        """Population constructor that initializes the contents of each population, its size, and the probabiity of it staying or
+        leaving. The defaults are that the population is empty and the phenotype is Fluffy"""
 
         self.popSize = popSize
         self.phenotype = phenotype
@@ -45,9 +45,23 @@ class population:
 
        
 
-    def phen_prob(self): #######
+    def prob(self,popnum): #######
         """Defines the probability of a phenotype in a specific population"""
 
+        fluffles = 0
+        fuzzles = 0
+
+        for i in self.indv:
+            if i.phen == "Fluffy":
+                fluffles += 1
+            else:
+                fuzzles += 1 
+
+        fluffPercent = round(fluffles/(fluffles+fuzzles),4)*100
+        fuzzPercent = round(fuzzles/(fluffles+fuzzles),4)*100
+
+        print("Population",popnum,"is",fluffPercent, "% Fluffy")
+        print("Population",popnum,"is",fuzzPercent, "% Fuzzy\n")
 
 
 class landscape:
@@ -61,23 +75,12 @@ class landscape:
         self.popSize1 = popSize1 # PopSize of Pop1
         self.popSize2 = popSize2 # PopSize of Pop2
 
-        self.weights = [[0.9,0.1],[0.8,0.2]]
-
         # Landscapes - Only 2 Allowed
         self.lands = [population(popSize1,phenotype="Fluffy",weights=[0.9,0.1]),population(popSize2,phenotype="Fuzzy",weights=[0.8,0.2])]
 
-
-
     def move(self):
         """Executes all movement between populations"""
-
-#        weight1 = [0.9,0.1]
-#        weight2 = [0.8,0.2]
-         
-
         for popl in self.lands: # Iterates over each population in the landscape
-            
-            
             for indv in popl.indv: # Iterates over each member in a population
                     
                 move = random.choices(self.lands, popl.weights) # Weighted Random movement from pop 1 to pop 2
@@ -97,27 +100,57 @@ class landscape:
 
 
 
-Pop1Size = 5    # Fluffy Population
-Pop2Size = 10   # Fuzzy Population
+Pop1Size = 10   # Fluffy Population
+Pop2Size = 15   # Fuzzy Population
+Weeks = 10     # Number of Weeks
 
-popl = population(Pop1Size,phenotype="Fluffy")
 
 landscape = landscape(Pop1Size,Pop2Size)
-
-#for i in range(1): # how to call population
-#    print(popl.indv[i].phen)
-
 
 
 #for i in range(Pop1Size): # how to call landscape
 #    print(landscape.lands[0].indv[i].phen)
 
-for i in range(10):
+for i in range(Weeks):
     landscape.move()
 
-print("~~~~~~~~~~~~~")
-for i in landscape.lands[0].indv: # how to call landscape
-    print(i.phen)
-print("----")
-for i in landscape.lands[1].indv: # how to call landscape
-    print(i.phen)
+    fluff = 0
+    fuzz = 0
+    fluff2 = 0
+    fuzz2 = 0
+
+    if i == (Weeks-1): # Prints the Final Population count
+        print("~~~~~~~~~~~~~")
+        for i in landscape.lands[0].indv: # how to call landscape
+            print(i.phen)
+
+            if i.phen == "Fluffy": # Counts fluff and fuzz
+                fluff+=1
+            else:
+                fuzz+=1
+
+        print(fluff)
+        print(fuzz)
+
+        print("----")
+        for i in landscape.lands[1].indv: # how to call landscape
+            print(i.phen)
+
+            if i.phen == "Fluffy": # Count fluss and fuzz
+                fluff2+=1
+            else:
+                fuzz2+=1
+            
+        print(fluff2)
+        print(fuzz2)
+        print("~~~~~~~~~~~~~")
+
+popnum=0
+for i in landscape.lands:
+    popnum += 1
+
+    i.prob(popnum)
+
+
+
+
