@@ -109,11 +109,11 @@ class landscape:
 
 
 """!!! Changeable Variables !!!"""
-Pop1Size = 10   # Fluffy Population
+Pop1Size = 20   # Fluffy Population
 Pop2Size = 15   # Fuzzy Population
 Weeks = 100     # Number of Weeks
-Weight1 = [0.9,0.1] # Pop1 Dispersal Values
-Weight2 = [0.8,0.2] # Pop2 Dispersal Values
+Weight1 = [0.5,0.5] # Pop1 Dispersal Values [stay value,leave value]
+Weight2 = [0.5,0.5] # Pop2 Dispersal Values [stay value,leave value]
 
 
 
@@ -203,20 +203,20 @@ sizetot.append(size2tot)
 """Plots for Pop Contents vs Time and Pop Size vs Time"""
 plt.figure(figsize=(10,4))        
 plt.subplot(121)
-plt.axis([1,11,0,21])
+plt.axis([1,(Weeks+1),0,(Pop1Size+Pop2Size)])
 plt.ylabel("Pop1 Phenotype:\n Fluff (Blue) and Fuzz (Orange)")
 plt.xlabel("Week Number")
 plt.plot(weeknum,pop1tot)
 
 plt.subplot(122)
-plt.axis([1,11,0,21])
+plt.axis([1,(Weeks+1),0,(Pop1Size+Pop2Size)])
 plt.ylabel("Pop2 Phenotype:\n Fluff (Blue) and Fuzz (Orange)")
 plt.xlabel("Week Number")
 plt.plot(weeknum,pop2tot)
 
 plt.figure(figsize=(10,4))
 plt.subplot(212)
-plt.axis([1,11,0,26])
+plt.axis([1,(Weeks+1),0,(Pop1Size+Pop2Size)])
 plt.ylabel("Population Size:\n Pop1 (Blue) and Pop2 (Orange)")
 plt.xlabel("Week Number")
 plt.plot(weeknum,size1tot)
