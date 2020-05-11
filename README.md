@@ -1,3 +1,27 @@
+# Question Answers
+
+_1. How do the frequencies of phenotypes change in each population week-by-week as individuals move?_
+Frequencies of each Phenotype wholly depends on how appealing each population is. They tend to aggregate in populations
+that have a higher 'stay' value.
+
+_2. What effect does an overall increase in the rate of movement (migration) have?_
+The overall migration pattern is much more variable. The size of each population per week will greatly fluctuate as opposed to
+lesser movement values.
+
+_3. What happens to both phenotype frequencies and population sizes when movement 
+probabilities are not symmetric (individuals have a higher probability of moving 
+from population A to population B, than they do of moving from population B to population A)?_
+Phenotype frequency for both phenotypes will tend to raise in the population with a higher 'stay' value. This is the same for
+the size of each population. They will grow depending on how large each populations's 'stay' value is.
+
+
+_4. What effect does changing the starting population sizes have on the trajectory of
+phenotype frequencies? In other words, what might happen if you connect big habitat patches 
+versus small habitat patches?_
+Over a large enough time period and even dispersal values, the population frequencies and population sizes will even out. 
+
+
+
 # PopulationMigration
 
 Simulated Populations with Individuals of varying phenotypes movement between Landscapes. 
@@ -6,7 +30,6 @@ Final Project
 
 Introduction to Computing for Biologists - Spring 2020
 
-Due by 5 PM on May 8, 2020
 
 ### Context
 
